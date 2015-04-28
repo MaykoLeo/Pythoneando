@@ -1,200 +1,292 @@
-#Holiiissss
-#Solo hice 2 tiradas del jugador 1, deben ser 4 tiradas de 3 dados
-#Falta las tiradas de jugador 2 q es lo mismo q lo del jugador 1 ctrl+c y ctrl+v y ya ta
-
-
-
 
 import random
 
-def jugador1():
+def dados():
+    global dado1, dado2, dado3, punt_dado1, punt_dado2, punt_dado3, duplicado
 
-#Muchos print son solo de comprobacion!!
-#t(n) = tirada (numero de tirada catual)
-#d = dado
-#j = jugador
+    dado1 = random.randint(1,6)
+    dado2 = random.randint(1,6)
+    dado3 = random.randint(1,6)
 
     duplicado = 0
-    t1_d1 = 0
-    t1_d2 = 0
-    t1_d3 = 0
+    punt_dado1=0
+    punt_dado2=0
+    punt_dado3=0
 
-    tirada1_d1=random.randint(1,6)
-    tirada1_d2=random.randint(1,6)
-    tirada1_d3=random.randint(1,6)
-
-#Se compueba que el primer dado sea impar
-    comprobacion1  = tirada1_d1 % 2
+    comprobacion1  = dado1 % 2
     print('\nComprobacion del dado 1 : ',comprobacion1)
 
     if comprobacion1 != 0:
-        if tirada1_d1 == 1:
-            t1_d1 = 1
-        elif tirada1_d1 == 3:
-            t1_d1 = 2
+        if dado1 == 1:
+            punt_dado1 = 1
+        elif dado1 == 3:
+            punt_dado1 = 2
         else:
-            t1_d1 = 4 #Se asume que el unico valor disponible restante sera 5, por lo tanto se le asigna la puntuacion correspondiente
+            punt_dado1 = 4 #Se asume que el unico valor disponible restante sera 5, por lo tanto se le asigna la puntuacion correspondiente
     else:
         print('El dado 1 es un numero par')
 
 
 #A partir de acá se analiza el segundo dado
-    comprobacion2 = tirada1_d2 % 2
+    comprobacion2 = dado2 % 2
     print('Comprobacion del dado 2 : ',comprobacion2)
 
     if comprobacion2 != 0:
-        if tirada1_d2 == 1:
-            t1_d2 = 1
-        elif tirada1_d2 == 3:
-            t1_d2 = 2
+        if dado2 == 1:
+            punt_dado2 = 1
+        elif dado2 == 3:
+            punt_dado2 = 2
         else:
-            t1_d2 = 4 #Se asume que el unico valor disponible restante sera 5, por lo tanto se le asigna la puntuacion correspondiente
+            punt_dado2 = 4 #Se asume que el unico valor disponible restante sera 5, por lo tanto se le asigna la puntuacion correspondiente
     else:
         print('El dado 2 es un numero par')
 
-    comprobacion3 = tirada1_d3 % 2
+
+#Tercer dado
+    comprobacion3 = dado3 % 2
     print('Comprobacion del dado 3 : ',comprobacion3)
 
     if comprobacion3 != 0:
-        if tirada1_d3 == 1:
-            t1_d3 = 1
-        elif tirada1_d3 == 3:
-            t1_d3 = 2
+        if dado3 == 1:
+            punt_dado3 = 1
+        elif dado3 == 3:
+            punt_dado3 = 2
         else:
-            t1_d3 = 4 #Se asume que el unico valor disponible restante sera 5, por lo tanto se le asigna la puntuacion correspondiente
+            punt_dado3 = 4 #Se asume que el unico valor disponible restante sera 5, por lo tanto se le asigna la puntuacion correspondiente
     else:
         print('El dado 3 es un numero par')
 
-
+#Comprobacion de duplicado de puntaje
     if comprobacion1 == 0 and comprobacion2 == 0 and comprobacion3 == 0:
-        if comprobacion1 == comprobacion2 == comprobacion3:
+        if dado1 == dado2 == dado3:
             duplicado=1
-            print('Se duplica el puntaje')
+            print('!Se duplica el puntaje!')
         else:
             print('No se duplica')
     else:
         print('No se duplica')
 
 
-#Esto es solo una comprobacion, al ultimo van los resultados finales
 
-    punt_tot_t1 = t1_d1 + t1_d2 + t1_d3
+def jugador_1():
+    global punt_total_j1
 
-    print('\nTiro 1 Dado 1 = ',tirada1_d1)
-    print('Tiro 1 Dado 2 = ',tirada1_d2)
-    print('Tiro 1 Dado 3 = ',tirada1_d3)
+#Primer tirada
+    print('\n---Comienza la primer tirada de dados---')
+    dados()
 
-    print('\nPuntos Tiro 1 Dado 1 = ',t1_d1)
-    print('Puntos Tiro 1 Dado 2 = ',t1_d2)
-    print('Puntos Tiro 1 Dado 3 = ',t1_d3)
+    dupli1 = duplicado
+    punt_1 = punt_dado1 + punt_dado2 + punt_dado3
 
-    print('Suma de los puntos de la primer tirada: ',punt_tot_t1)
-#Termina comprobacin y la tirada 1
+    print('\nTiro 1 Dado 1 = ',dado1)
+    print('Tiro 1 Dado 2 = ',dado2)
+    print('Tiro 1 Dado 3 = ',dado3)
+
+    print('\nPuntos Tiro 1 Dado 1 = ',punt_dado1)
+    print('Puntos Tiro 1 Dado 2 = ',punt_dado2)
+    print('Puntos Tiro 1 Dado 3 = ',punt_dado3)
+
+    print('-Suma de los puntos de la primer tirada: ',punt_1)
 
 
+#segunda tirada
+    print('\n---Comienza la segunda tirada de dados---')
+
+    dados()
+
+    dupli2 = duplicado
+    punt_2 = punt_dado1 + punt_dado2 + punt_dado3
+
+    print('\nTiro 2 Dado 1 = ',dado1)
+    print('Tiro 2 Dado 2 = ',dado2)
+    print('Tiro 2 Dado 3 = ',dado3)
+
+    print('\nPuntos Tiro 2 Dado 1 = ',punt_dado1)
+    print('Puntos Tiro 2 Dado 2 = ',punt_dado2)
+    print('Puntos Tiro 2 Dado 3 = ',punt_dado3)
+
+    print('-Suma de los puntos de la segunda tirada: ',punt_2)
 
 
-    #Desde aquí comienza la segunda tirada de dados del jugador 1 !!!!!!!!
+#Tercera tirada
+    print('\n---Comienza la tercer tirada de dados---')
 
-    t2_d1 = 0
-    t2_d2 = 0
-    t2_d3 = 0
+    dados()
 
-    tirada2_d1=random.randint(1,6)
-    tirada2_d2=random.randint(1,6)
-    tirada2_d3=random.randint(1,6)
+    dupli3 = duplicado
+    punt_3 = punt_dado1 + punt_dado2 + punt_dado3
 
-#Se compueba que el primer dado sea impar
-    comprobacion1 = tirada2_d1 % 2
-    print('\nComprobacion del dado 1 : ',comprobacion1)
+    print('\nTiro 3 Dado 1 = ',dado1)
+    print('Tiro 3 Dado 2 = ',dado2)
+    print('Tiro 3 Dado 3 = ',dado3)
 
-    if comprobacion1 != 0:
-        if tirada2_d1 == 1:
-            t2_d1 = 1
-        elif tirada2_d1 == 3:
-            t2_d1 = 2
-        else:
-            t2_d1 = 4 #Se asume que el unico valor disponible restante sera 5, por lo tanto se le asigna la puntuacion correspondiente
+    print('\nPuntos Tiro 3 Dado 1 = ',punt_dado1)
+    print('Puntos Tiro 3 Dado 2 = ',punt_dado2)
+    print('Puntos Tiro 3 Dado 3 = ',punt_dado3)
+
+    print('-Suma de los puntos de la tercer tirada: ',punt_3)
+
+
+#Cuarta y última tirada
+    print('\n---Comienza la cuarta tirada de dados---')
+
+    dados()
+
+    dupli4 = duplicado
+    punt_4 = punt_dado1 + punt_dado2 + punt_dado3
+
+    print('\nTiro 4 Dado 1 = ',dado1)
+    print('Tiro 4 Dado 2 = ',dado2)
+    print('Tiro 4 Dado 3 = ',dado3)
+
+    print('\nPuntos Tiro 4 Dado 1 = ',punt_dado1)
+    print('Puntos Tiro 4 Dado 2 = ',punt_dado2)
+    print('Puntos Tiro 4 Dado 3 = ',punt_dado3)
+
+    print('-Suma de los puntos de la cuarta tirada: ',punt_4)
+
+    punt_total_j1 = punt_1 + punt_2 + punt_3 + punt_4
+
+    if dupli1 == 1 or dupli2 == 1 or dupli3 == 1 or dupli4 == 1:
+        punt_total_j1 = punt_total_j1 * 2
+        print('\nBONUS DE DUPLICADO DISPONIBLE!!')
     else:
-        print('El dado 1 es un numero par')
+        print('\nNo hay bonus de duplicado disponible.')
 
 
-#A partir de acá se analiza el segundo dado
-    comprobacion2 = tirada2_d2 % 2
-    print('Comprobacion del dado 2 : ',comprobacion2)
+    print('\n--* La Puntuación Total del Jugador 1 es: ',punt_total_j1,'puntos *--')
 
-    if comprobacion2 != 0:
-        if tirada2_d2 == 1:
-            t1_d2 = 1
-        elif tirada2_d2 == 3:
-            t2_d2 = 2
-        else:
-            t2_d2 = 4 #Se asume que el unico valor disponible restante sera 5, por lo tanto se le asigna la puntuacion correspondiente
+
+
+
+
+def jugador_2():
+    global punt_total_j2
+
+    print('\n\n---ES TURNO DEL JUGADOR 2---')
+
+#Primer tirada
+    print('\n---Comienza la primer tirada de dados---')
+    dados()
+
+    dupli1 = duplicado
+    punt_1 = punt_dado1 + punt_dado2 + punt_dado3
+
+    print('\nTiro 1 Dado 1 = ',dado1)
+    print('Tiro 1 Dado 2 = ',dado2)
+    print('Tiro 1 Dado 3 = ',dado3)
+
+    print('\nPuntos Tiro 1 Dado 1 = ',punt_dado1)
+    print('Puntos Tiro 1 Dado 2 = ',punt_dado2)
+    print('Puntos Tiro 1 Dado 3 = ',punt_dado3)
+
+    print('-Suma de los puntos de la primer tirada: ',punt_1)
+
+
+#segunda tirada
+    print('\n---Comienza la segunda tirada de dados---')
+
+    dados()
+
+    dupli2 = duplicado
+    punt_2 = punt_dado1 + punt_dado2 + punt_dado3
+
+    print('\nTiro 2 Dado 1 = ',dado1)
+    print('Tiro 2 Dado 2 = ',dado2)
+    print('Tiro 2 Dado 3 = ',dado3)
+
+    print('\nPuntos Tiro 2 Dado 1 = ',punt_dado1)
+    print('Puntos Tiro 2 Dado 2 = ',punt_dado2)
+    print('Puntos Tiro 2 Dado 3 = ',punt_dado3)
+
+    print('-Suma de los puntos de la segunda tirada: ',punt_2)
+
+
+#Tercera tirada
+    print('\n---Comienza la tercer tirada de dados---')
+
+    dados()
+
+    dupli3 = duplicado
+    punt_3 = punt_dado1 + punt_dado2 + punt_dado3
+
+    print('\nTiro 3 Dado 1 = ',dado1)
+    print('Tiro 3 Dado 2 = ',dado2)
+    print('Tiro 3 Dado 3 = ',dado3)
+
+    print('\nPuntos Tiro 3 Dado 1 = ',punt_dado1)
+    print('Puntos Tiro 3 Dado 2 = ',punt_dado2)
+    print('Puntos Tiro 3 Dado 3 = ',punt_dado3)
+
+    print('-Suma de los puntos de la tercer tirada: ',punt_3)
+
+
+#Cuarta y última tirada
+    print('\n---Comienza la cuarta tirada de dados---')
+
+    dados()
+
+    dupli4 = duplicado
+    punt_4 = punt_dado1 + punt_dado2 + punt_dado3
+
+    print('\nTiro 4 Dado 1 = ',dado1)
+    print('Tiro 4 Dado 2 = ',dado2)
+    print('Tiro 4 Dado 3 = ',dado3)
+
+    print('\nPuntos Tiro 4 Dado 1 = ',punt_dado1)
+    print('Puntos Tiro 4 Dado 2 = ',punt_dado2)
+    print('Puntos Tiro 4 Dado 3 = ',punt_dado3)
+
+    print('-Suma de los puntos de la cuarta tirada: ',punt_4)
+
+    punt_total_j2 = punt_1 + punt_2 + punt_3 + punt_4
+
+    if dupli1 == 1 or dupli2 == 1 or dupli3 == 1 or dupli4 == 1:
+        punt_total_j2 = punt_total_j2 * 2
+        print('\nBONUS DE DUPLICADO DISPONIBLE!!')
     else:
-        print('El dado 2 es un numero par')
+        print('\nNo hay bonus de duplicado disponible.')
 
-    comprobacion3 = tirada2_d3 % 2
-    print('Comprobacion del dado 3 : ',comprobacion3)
 
-    if comprobacion3 != 0:
-        if tirada2_d3 == 1:
-            t2_d3 = 1
-        elif tirada2_d3 == 3:
-            t2_d3 = 2
-        else:
-            t2_d3 = 4 #Se asume que el unico valor disponible restante sera 5, por lo tanto se le asigna la puntuacion correspondiente
+    print('\n--* La Puntuación Total del Jugador 2 es: ',punt_total_j2,'Puntos *--')
+
+
+
+def dinero_dinero_dinero():
+
+    empate = 0
+
+    if punt_total_j1 == punt_total_j2:
+        print('\nLA PUNTUACION DE AMBOS JUGADORES ES IGUAL, POR LO TANTO HAY EMPATE')
+        print('Cada jugador recupera su apuesta inicial correspondiente')
+        empate = 1
+    elif punt_total_j1 > punt_total_j2:
+        print('\nEL JUGADOR 1 GANA LA PARTIDA!!')
     else:
-        print('El dado 3 es un numero par')
+        print('\nEL JUGADOR 2 GANA LA PARTIDA!!')
 
 
-    if comprobacion1 == 0 and comprobacion2 == 0 and comprobacion3 == 0:
-        if comprobacion1 == comprobacion2 == comprobacion3:
-            duplicado=1
-            print('Se duplica el puntaje')
+
+    if empate != 1:
+        if apuesta <= 2000:
+            gan_casino = (apuesta * 15) / 100
+            apuesta = apuesta - gan_casino
+            print('\nEl casino cobrará una comisión del 15 por ciento, por lo tanto le corresponderá: ',gan_casino,'Pesos.')
+            print('El jugador Ganador cobrará:', apuesta,'Pesos.')
         else:
-            print('No se duplica')
+            gan_casino = (apuesta * 25) / 100
+            apuesta = apuesta - gan_casino
+            print('\nEl casino cobrará una comisión del 25 por ciento, por lo tanto le corresponderá: ',gan_casino,'Pesos.')
+            print('El jugador Ganador cobrará:', apuesta,'Pesos.')
     else:
-        print('No se duplica')
-
-#Esto es solo una comprobacion, al ñultimo van los resultados finales
-
-    punt_tot_t2 = t2_d1 + t2_d2 + t2_d3
-
-    print('\nTiro 2 Dado 1 = ',tirada2_d1)
-    print('Tiro 2 Dado 2 = ',tirada2_d2)
-    print('Tiro 2 Dado 3 = ',tirada2_d3)
-
-    print('\nPuntos Tiro 2 Dado 1 = ',t2_d1)
-    print('Puntos Tiro 1 Dado 2 = ',t2_d2)
-    print('Puntos Tiro 1 Dado 3 = ',t2_d3)
-
-    print('Suma de los puntos de la segunda tirada: ',punt_tot_t2)
+        print('Al ser un empate entre ambos jugadores el casino no cobrará comisiñon')
 
 
 
+#script principal
+apuesta=float(input('Ingrese el monto de la apuesta acordado por ambos jugadores: '))
+print('-El Jugador 1 comienza jugando-')
 
-
-    punt_total_jugador1 = punt_tot_t1 + punt_tot_t2
-
-
-    if duplicado == 1:
-        punt_total_jugador1 = punt_total_jugador1 * 2
-
-    print('\nPuntuacion total jugador 1: ',punt_total_jugador1)
-
-
-
-
-
-
-
-nom1=input('Ingrese el Nombre del Jugador 1: ')
-nom2=input('Ingrese el Nombre del Jugador 2: ')
-pozo=float(input('Ingrese apuesta acordada por ambos jugadores: '))
-
-
-
-print('\nEl jugador 1 "',nom1,'" comienza jugando.')
-
-jugador1()
-
+jugador_1()
+jugador_2()
+dinero_dinero_dinero()
