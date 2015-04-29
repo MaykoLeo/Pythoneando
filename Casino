@@ -4,6 +4,7 @@ import random
 
 
 
+
 #-----INICIO DE FUNCIÓN-----
 
 """
@@ -33,15 +34,14 @@ def dados():
     punt_dado3 = 0
 
 
+
     #---PRIMER DADO---
     #Aquí se analizará inicialmente el resto de cada dado al dividirlo en dos, para saber si son pares o impares
     comprobacion1  = dado1 % 2
 #*****************************
     print('\nComprobacion del dado 1 : ',comprobacion1)
-
     #En caso de ser impares, el resto que obtendremos al dividirlo en 2 sera distinto de 0; que es la condición siguiente
     if comprobacion1 != 0:
-
         """
         Si la condición se cumple, es decir que los números son impares
          procedemos a analizar el valor de cada uno y asignarle la puntuación correspondiente.
@@ -51,7 +51,6 @@ def dados():
         elif dado1 == 3:
             punt_dado1 = 2
         else:
-
             """
             Se asume que el único valor disponible restante sera 5
               por lo tanto se le asigna la puntuacion correspondiente, en este caso será 4 puntos.
@@ -60,6 +59,7 @@ def dados():
 #********************************
     else:
         print('El dado 1 es un numero par')
+
 
 
     #--SEGUNDO DADO--
@@ -80,6 +80,7 @@ def dados():
         print('El dado 2 es un numero par')
 
 
+
     #--TERCER DADO--
     comprobacion3 = dado3 % 2
 #**************************************
@@ -97,16 +98,16 @@ def dados():
         print('El dado 3 es un numero par')
 
 
+
     #COMPROBACIÓN DE DUPLICADO DE PUNTAJE
     #La primer condición será que todos los dados correspondientes a una misma tirada sean pares
     if comprobacion1 == 0 and comprobacion2 == 0 and comprobacion3 == 0:
-
         """
         Al cumplirse esta primer condición se procede a una segunda
          que analizará si ademas de ser pares, todos los números son iguales entre sí.
         """
-        if dado1 == dado2 == dado3:
 
+        if dado1 == dado2 == dado3:
             """
             Si se cumplen ambas condiciones
              se determinará que todos los números pares de una misma tirada son iguales
@@ -115,7 +116,6 @@ def dados():
              cambie a el valor 1 que servirá para una condición futura en otra función.
             """
             duplicado=1
-
 #***************************************************
             print('!Se duplica el puntaje!')
         else:
@@ -136,6 +136,8 @@ def jugador_1():
 
     #La variable globar siguiente sera el puntaje total del jugador 1 y se utilizará en una función futura
     global punt_total_j1
+
+
 
     #-PRIMER TIRADA
     print('\n---Comienza la primer tirada de dados---')
@@ -160,6 +162,7 @@ def jugador_1():
     punt_1 = punt_dado1 + punt_dado2 + punt_dado3
 
 
+
     """
     Mostramos por pantalla los datos de las variables que "rescatamos" de la funcion 'dados()'.
     En otras palabras se muestra el valor de cada dado, la tirada correspondiente, el puntaje correspondiente a cada dado
@@ -174,6 +177,7 @@ def jugador_1():
     print('Puntos Tiro 1 Dado 3 = ',punt_dado3)
 
     print('-Suma de los puntos de la primer tirada: ',punt_1)
+
 
 
     #-SEGUNDA TIRADA
@@ -192,6 +196,7 @@ def jugador_1():
     dupli2 = duplicado
     punt_2 = punt_dado1 + punt_dado2 + punt_dado3
 
+
     #Se muestran los resultados
     print('\nTiro 2 Dado 1 = ',dado1)
     print('Tiro 2 Dado 2 = ',dado2)
@@ -204,13 +209,17 @@ def jugador_1():
     print('-Suma de los puntos de la segunda tirada: ',punt_2)
 
 
+
     #-TERCERA TIRADA
     print('\n---Comienza la tercer tirada de dados---')
 
+
     dados()
+
 
     dupli3 = duplicado
     punt_3 = punt_dado1 + punt_dado2 + punt_dado3
+
 
     print('\nTiro 3 Dado 1 = ',dado1)
     print('Tiro 3 Dado 2 = ',dado2)
@@ -223,13 +232,17 @@ def jugador_1():
     print('-Suma de los puntos de la tercer tirada: ',punt_3)
 
 
+
     #-CUARTA TIRADA
     print('\n---Comienza la cuarta tirada de dados---')
 
+
     dados()
+
 
     dupli4 = duplicado
     punt_4 = punt_dado1 + punt_dado2 + punt_dado3
+
 
     print('\nTiro 4 Dado 1 = ',dado1)
     print('Tiro 4 Dado 2 = ',dado2)
@@ -282,14 +295,21 @@ def jugador_2():
     #Siempre teniendo en cuanta que se realizan los mismos procedimientos que para el jugador 1 (obviamente cambiando algunos nombres de variables)
     global punt_total_j2
 
+
     print('\n\n---ES TURNO DEL JUGADOR 2---')
+
+
 
     #-PRIMER TIRADA
     print('\n---Comienza la primer tirada de dados---')
+
+
     dados()
+
 
     dupli1 = duplicado
     punt_1 = punt_dado1 + punt_dado2 + punt_dado3
+
 
     print('\nTiro 1 Dado 1 = ',dado1)
     print('Tiro 1 Dado 2 = ',dado2)
@@ -302,13 +322,17 @@ def jugador_2():
     print('-Suma de los puntos de la primer tirada: ',punt_1)
 
 
+
     #-SEGUNDA TIRADA
     print('\n---Comienza la segunda tirada de dados---')
 
+
     dados()
+
 
     dupli2 = duplicado
     punt_2 = punt_dado1 + punt_dado2 + punt_dado3
+
 
     print('\nTiro 2 Dado 1 = ',dado1)
     print('Tiro 2 Dado 2 = ',dado2)
@@ -321,13 +345,17 @@ def jugador_2():
     print('-Suma de los puntos de la segunda tirada: ',punt_2)
 
 
+
     #-TERCER TIRADA
     print('\n---Comienza la tercer tirada de dados---')
 
+
     dados()
+
 
     dupli3 = duplicado
     punt_3 = punt_dado1 + punt_dado2 + punt_dado3
+
 
     print('\nTiro 3 Dado 1 = ',dado1)
     print('Tiro 3 Dado 2 = ',dado2)
@@ -340,13 +368,17 @@ def jugador_2():
     print('-Suma de los puntos de la tercer tirada: ',punt_3)
 
 
+
     #-CUARTA TIRADA
     print('\n---Comienza la cuarta tirada de dados---')
 
+
     dados()
+
 
     dupli4 = duplicado
     punt_4 = punt_dado1 + punt_dado2 + punt_dado3
+
 
     print('\nTiro 4 Dado 1 = ',dado1)
     print('Tiro 4 Dado 2 = ',dado2)
@@ -358,7 +390,9 @@ def jugador_2():
 
     print('-Suma de los puntos de la cuarta tirada: ',punt_4)
 
+
     punt_total_j2 = punt_1 + punt_2 + punt_3 + punt_4
+
 
     if dupli1 == 1 or dupli2 == 1 or dupli3 == 1 or dupli4 == 1:
         punt_total_j2 = punt_total_j2 * 2
@@ -382,7 +416,10 @@ En esta función sería la principal se realizan las operaciónes referentes a l
  que se ejecutan al inicio del programa
 """
 def dinero_dinero_dinero():
+
     print('***-BIENVENIDO AL JUEGO DEL PUNTO-***')
+
+
     #Se pide el ingreso por teclado de la apuesta que ambos jugadores acuerden
     apuesta=float(input('\nIngrese el monto de la apuesta acordado por ambos jugadores: '))
 
@@ -397,6 +434,7 @@ def dinero_dinero_dinero():
     #Inicializamos 'empate' en 0
     empate = 0
 
+
     """
     Se analiza cual jugador tiene mayor puntaje y que por lo tanto será el ganador,
      tambien se puede dar el caso de empate y la variable 'empate' cambiara su valor a 1
@@ -406,7 +444,6 @@ def dinero_dinero_dinero():
         print('\nLA PUNTUACION DE AMBOS JUGADORES ES IGUAL, POR LO TANTO HAY EMPATE')
         print('Cada jugador recupera su apuesta inicial correspondiente')
         empate = 1
-
     elif punt_total_j1 > punt_total_j2:
         print('\nEL JUGADOR 1 GANA LA PARTIDA!!')
     else:
@@ -414,27 +451,24 @@ def dinero_dinero_dinero():
 
 
     print('\nEl pozo de apuesta vale: ',apuesta)
+
+
     #Teniendo en cuenta la variable anterior llamada 'empate':
     if empate != 1:
-
         #Se cumple que empate no cambió su valor, por lo tanto sigue valiendo 0
         #La siguente condición analiza el monto apostado para asi determinar el porcentaje de comisión que recibira el casino y el jugador ganador
-
         if apuesta <= 2000:
             #El casino cobra un 15 por ciento si la apuesta es menor a 2000
-
             gan_casino = (apuesta * 15) / 100
             apuesta = apuesta - gan_casino
             print('\nEl casino cobrará una comisión del 15 por ciento, por lo tanto le corresponderá: ',gan_casino,'Pesos.')
             print('El jugador Ganador cobrará:', apuesta,'Pesos.')
         else:
-
             #Y cobra un 25 por ciento si la apuesta es mayor a 2000 (al no cumplirse la condición anterior se determina que la apuesta es mayor a 2000)
             gan_casino = (apuesta * 25) / 100
             apuesta = apuesta - gan_casino
             print('\nEl casino cobrará una comisión del 25 por ciento, por lo tanto le corresponderá: ',gan_casino,'Pesos.')
             print('El jugador Ganador cobrará:', apuesta,'Pesos.')
-
     else:
         """
         Si no se cumple la condición, quiere decir que la variable 'empate' cambió su valo de 0 a 1
