@@ -255,7 +255,6 @@ def jugador_2():
 
 def dinero_dinero_dinero():
     """
-
     Esta función sería la principal, en ella se realizan las operaciones
 
     referentes a la parte monetaria (como su nombre lo indica),calculando las
