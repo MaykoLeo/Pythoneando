@@ -172,9 +172,8 @@ def jugador_1():
     print('-Suma de los puntos de la cuarta tirada: ',punt_4)
 
 
-#    punt_total_j1 = punt_1 + punt_2 + punt_3 + punt_4
-    punt_total_j1 = 15
-
+    punt_total_j1 = punt_1 + punt_2 + punt_3 + punt_4
+   
 
     if dupli1 == 1 or dupli2 == 1 or dupli3 == 1 or dupli4 == 1:
         punt_total_j1 = punt_total_j1 * 2
@@ -287,8 +286,7 @@ def jugador_2():
     print('-Suma de los puntos de la cuarta tirada: ',punt_4)
 
 
-#    punt_total_j2 = punt_1 + punt_2 + punt_3 + punt_4
-    punt_total_j2 = 15
+    punt_total_j2 = punt_1 + punt_2 + punt_3 + punt_4
 
 
     if dupli1 == 1 or dupli2 == 1 or dupli3 == 1 or dupli4 == 1:
