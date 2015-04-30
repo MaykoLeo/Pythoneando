@@ -1,3 +1,4 @@
+
 #Se invoca al módulo 'random' para generar números aleatorios
 import random
 
@@ -7,27 +8,21 @@ import random
 
 #-----INICIO DE FUNCIÓN-----
 
-"""
-Esta funcion asignara números aleatorios, determinara el puntaje segun cada valor
-y comprobará si hay números pares iguales que otra funciñon utilizará para multiplicar el puntaje.
-"""
-def dados():
 
-    #Se declaran globales las siguientes variables
+def dados():
+    """
+    Esta funcion asignara números aleatorios, determinara el puntaje segun cada valor
+     y comprobará si hay números pares iguales que otra funciñon utilizará para multiplicar el puntaje.
+    """
+
     global dado1, dado2, dado3, punt_dado1, punt_dado2, punt_dado3, duplicado
 
-    #Se procede a generar los numeros aleatorios y almacenarlos en variables
+
     dado1 = random.randint(1,6)
     dado2 = random.randint(1,6)
     dado3 = random.randint(1,6)
 
-    """
-    Inicializamos en 0 las variables q utilizaremos a continuación:
-     punt_dado(n): ('n' número de dado). Éstas variables corresponderan a los puntos generados
-     dependiendo del valor aleatorio que se le asigne.
-    La variable duplicado cambiara de valor de 0 a 1 dependiendo si cumple una determinada condición,
-     lo que nos indicará que el puntaje total final se duplicará.
-    """
+
     duplicado = 0
     punt_dado1 = 0
     punt_dado2 = 0
@@ -36,37 +31,21 @@ def dados():
 
 
     #---PRIMER DADO---
-    #Aquí se analizará inicialmente el resto de cada dado al dividirlo en dos, para saber si son pares o impares
+    #Primero se analizará el resto de cada valor de los dados al dividirlo en dos, para determinar si son pares o impares
     comprobacion1  = dado1 % 2
-#*****************************
-    print('\nComprobacion del dado 1 : ',comprobacion1)
-    #En caso de ser impares, el resto que obtendremos al dividirlo en 2 sera distinto de 0; que es la condición siguiente
+
     if comprobacion1 != 0:
-        """
-        Si la condición se cumple, es decir que los números son impares
-         procedemos a analizar el valor de cada uno y asignarle la puntuación correspondiente.
-        """
         if dado1 == 1:
             punt_dado1 = 1
         elif dado1 == 3:
             punt_dado1 = 2
         else:
-            """
-            Se asume que el único valor disponible restante sera 5
-              por lo tanto se le asigna la puntuacion correspondiente, en este caso será 4 puntos.
-            """
             punt_dado1 = 4
-#********************************
-    else:
-        print('El dado 1 es un numero par')
 
 
 
     #--SEGUNDO DADO--
-    #A partir de acá, todos los dados se analizarán con los mismos criterios que se realizaron anteriormente
     comprobacion2 = dado2 % 2
-#*******************************
-    print('Comprobacion del dado 2 : ',comprobacion2)
 
     if comprobacion2 != 0:
         if dado2 == 1:
@@ -75,16 +54,11 @@ def dados():
             punt_dado2 = 2
         else:
             punt_dado2 = 4
-#***************************************
-    else:
-        print('El dado 2 es un numero par')
 
 
 
     #--TERCER DADO--
     comprobacion3 = dado3 % 2
-#**************************************
-    print('Comprobacion del dado 3 : ',comprobacion3)
 
     if comprobacion3 != 0:
         if dado3 == 1:
@@ -93,35 +67,14 @@ def dados():
             punt_dado3 = 2
         else:
             punt_dado3 = 4
-#****************************************
-    else:
-        print('El dado 3 es un numero par')
 
 
 
     #COMPROBACIÓN DE DUPLICADO DE PUNTAJE
-    #La primer condición será que todos los dados correspondientes a una misma tirada sean pares
     if comprobacion1 == 0 and comprobacion2 == 0 and comprobacion3 == 0:
-        """
-        Al cumplirse esta primer condición se procede a una segunda
-         que analizará si ademas de ser pares, todos los números son iguales entre sí.
-        """
-
         if dado1 == dado2 == dado3:
-            """
-            Si se cumplen ambas condiciones
-             se determinará que todos los números pares de una misma tirada son iguales
-             y por lo tanto se duplicará el puntaje final del jugador.
-            Cambiando el valor de la variable 'duplicado', inicializada en 0,
-             cambie a el valor 1 que servirá para una condición futura en otra función.
-            """
             duplicado=1
-#***************************************************
-            print('!Se duplica el puntaje!')
-        else:
-            print('No se duplica')
-    else:
-        print('No se duplica')
+
 
 #-----FIN DE FUNCIÓN-----
 
@@ -131,10 +84,7 @@ def dados():
 
 #-----INICIO DE FUNCIÓN-----
 
-#Ésta función corresponde al jugador 1
 def jugador_1():
-
-    #La variable globar siguiente sera el puntaje total del jugador 1 y se utilizará en una función futura
     global punt_total_j1
 
 
@@ -142,32 +92,12 @@ def jugador_1():
     #-PRIMER TIRADA
     print('\n---Comienza la primer tirada de dados---')
 
-    #Se procede a invocar a la función que realiza la asignación de numeros aleatorios a los dados
-    #En este caso a la función le corresponde el nombre de 'dados()' asignada inicialmete.....(10 puntos para la originalidad de los nombres)
     dados()
 
-    """
-    Al terminar de ejecutarse la funcion 'dados()' "rescataremos" de ella las variables 'duplicado',
-     'punt_dado1', 'punt_dado2', 'punt_dado3', 'dado1', 'dado2' y 'dado3'.
-
-    Ya que utilizamos la misma función 'dados()' para cada tirada de dados
-     guardamos dichas variables en otras variables llamadas 'dupli1'(que se le asigna el valor de la variable 'duplicado')
-     y'punt_1'( que será igual a la suma de 'punt_dado1', 'punt_dado2' y 'punt_dado3').
-
-    Por eso el término "rescataremos" ya que al no hacer esto, cuando se vuelva a ejecutar la funcion 'dados',
-     las variables generadas inicialmenteen la ejecución anterior serán sustituidas por otros datos, perdiendo los que previamente tenía asignados.
-    Las variables 'dado1', 'dado2' y 'dado3' solo se mostrarán por pantalla.
-    """
     dupli1 = duplicado
     punt_1 = punt_dado1 + punt_dado2 + punt_dado3
 
 
-
-    """
-    Mostramos por pantalla los datos de las variables que "rescatamos" de la funcion 'dados()'.
-    En otras palabras se muestra el valor de cada dado, la tirada correspondiente, el puntaje correspondiente a cada dado
-     y la suma de los puntos totales de dicha tirada.
-    """
     print('\nTiro 1 Dado 1 = ',dado1)
     print('Tiro 1 Dado 2 = ',dado2)
     print('Tiro 1 Dado 3 = ',dado3)
@@ -181,23 +111,14 @@ def jugador_1():
 
 
     #-SEGUNDA TIRADA
-    """
-    A partir de aquí se realizan los mismos pasos que en la tirada anterior
-     solo que algunos datos seran asignados en variables de nombre diferentea las anteriores.
-    """
     print('\n---Comienza la segunda tirada de dados---')
 
-
-    #Llamamos a la función
     dados()
 
-    #A la variable 'duplicado' de la función 'dados()' se la almacena en la variable 'dupli2'
-    #Y a la suma de los puntajes ('punt_dado1', 'punt_dado2' y 'punt_dado3') 'en punt_2'
     dupli2 = duplicado
     punt_2 = punt_dado1 + punt_dado2 + punt_dado3
 
 
-    #Se muestran los resultados
     print('\nTiro 2 Dado 1 = ',dado1)
     print('Tiro 2 Dado 2 = ',dado2)
     print('Tiro 2 Dado 3 = ',dado3)
@@ -213,9 +134,7 @@ def jugador_1():
     #-TERCERA TIRADA
     print('\n---Comienza la tercer tirada de dados---')
 
-
     dados()
-
 
     dupli3 = duplicado
     punt_3 = punt_dado1 + punt_dado2 + punt_dado3
@@ -236,9 +155,7 @@ def jugador_1():
     #-CUARTA TIRADA
     print('\n---Comienza la cuarta tirada de dados---')
 
-
     dados()
-
 
     dupli4 = duplicado
     punt_4 = punt_dado1 + punt_dado2 + punt_dado3
@@ -255,31 +172,15 @@ def jugador_1():
     print('-Suma de los puntos de la cuarta tirada: ',punt_4)
 
 
-
-    """
-    Sumamos el puntaje de cada tirada de dados correspondientes en este caso al jugador 1
-     y obtendremos el puntaje total de dicho jugador.
-    """
-    punt_total_j1 = punt_1 + punt_2 + punt_3 + punt_4
+#    punt_total_j1 = punt_1 + punt_2 + punt_3 + punt_4
+    punt_total_j1 = 15
 
 
-    """
-    Aquí se analiza si alguna varieble dupli ha cambiado su valor, de 0 a 1 lo que idicaría
-     que, en por lo menos en una tirada, todos los números son pares iguales.
-    """
     if dupli1 == 1 or dupli2 == 1 or dupli3 == 1 or dupli4 == 1:
-
-        #Al cumplirse la condición, se multiplica el puntaje total del jugador afectado
         punt_total_j1 = punt_total_j1 * 2
-
-        #Se muestra por pantalla dicho acontecimiento. Llamaremos Bonus al duplcado de puntaje
         print('\nBONUS DE DUPLICADO DISPONIBLE!!')
-
-    #En caso de no cumplirse la condición se indicara por pantalla lo siguiente:
     else:
         print('\nNo hay bonus de duplicado disponible.')
-
-
     print('\n--* La Puntuación Total del Jugador 1 es: ',punt_total_j1,'puntos *--')
 
 #-----FIN DE FUNCIÓN-----
@@ -290,13 +191,8 @@ def jugador_1():
 
 #-----INICIO DE FUNCIÓN-----
 
-#Se analizan los resultados para el jugador 2
 def jugador_2():
-    #Siempre teniendo en cuanta que se realizan los mismos procedimientos que para el jugador 1 (obviamente cambiando algunos nombres de variables)
     global punt_total_j2
-
-
-    print('\n\n---ES TURNO DEL JUGADOR 2---')
 
 
 
@@ -391,7 +287,8 @@ def jugador_2():
     print('-Suma de los puntos de la cuarta tirada: ',punt_4)
 
 
-    punt_total_j2 = punt_1 + punt_2 + punt_3 + punt_4
+#    punt_total_j2 = punt_1 + punt_2 + punt_3 + punt_4
+    punt_total_j2 = 15
 
 
     if dupli1 == 1 or dupli2 == 1 or dupli3 == 1 or dupli4 == 1:
@@ -410,17 +307,17 @@ def jugador_2():
 
 #-----INICIO DE FUNCIÓN-----
 
-"""
+
+def dinero_dinero_dinero():
+    """
 En esta función sería la principal se realizan las operaciónes referentes a la parte monetaria (como su nombre lo indica),
  calculando las ganancias para los jugadores y para el mismo casino, ademas de mostrar algunos mensajes por pantalla
  que se ejecutan al inicio del programa
-"""
-def dinero_dinero_dinero():
+    """
 
     print('***-BIENVENIDO AL JUEGO DEL PUNTO-***')
 
 
-    #Se pide el ingreso por teclado de la apuesta que ambos jugadores acuerden
     apuesta=float(input('\nIngrese el monto de la apuesta acordado por ambos jugadores: '))
 
 
@@ -431,17 +328,11 @@ def dinero_dinero_dinero():
     jugador_2()
 
 
-    #Inicializamos 'empate' en 0
     empate = 0
 
 
-    """
-    Se analiza cual jugador tiene mayor puntaje y que por lo tanto será el ganador,
-     tambien se puede dar el caso de empate y la variable 'empate' cambiara su valor a 1
-    """
     if punt_total_j1 == punt_total_j2:
-        #Al compirse la condición, se informa el acontecimiento por pantalla. La variable'empate' cambia su valor.
-        print('\nLA PUNTUACION DE AMBOS JUGADORES ES IGUAL, POR LO TANTO HAY EMPATE')
+        print('\nLA PUNTUACION DE AMBOS JUGADORES ES IGUAL A: ',punt_total_j2,'PUNTOS, POR LO TANTO HAY EMPATE')
         print('Cada jugador recupera su apuesta inicial correspondiente')
         empate = 1
     elif punt_total_j1 > punt_total_j2:
@@ -453,28 +344,19 @@ def dinero_dinero_dinero():
     print('\nEl pozo de apuesta vale: ',apuesta)
 
 
-    #Teniendo en cuenta la variable anterior llamada 'empate':
     if empate != 1:
-        #Se cumple que empate no cambió su valor, por lo tanto sigue valiendo 0
-        #La siguente condición analiza el monto apostado para asi determinar el porcentaje de comisión que recibira el casino y el jugador ganador
         if apuesta <= 2000:
-            #El casino cobra un 15 por ciento si la apuesta es menor a 2000
             gan_casino = (apuesta * 15) / 100
             apuesta = apuesta - gan_casino
             print('\nEl casino cobrará una comisión del 15 por ciento, por lo tanto le corresponderá: ',gan_casino,'Pesos.')
             print('El jugador Ganador cobrará:', apuesta,'Pesos.')
         else:
-            #Y cobra un 25 por ciento si la apuesta es mayor a 2000 (al no cumplirse la condición anterior se determina que la apuesta es mayor a 2000)
             gan_casino = (apuesta * 25) / 100
             apuesta = apuesta - gan_casino
             print('\nEl casino cobrará una comisión del 25 por ciento, por lo tanto le corresponderá: ',gan_casino,'Pesos.')
             print('El jugador Ganador cobrará:', apuesta,'Pesos.')
     else:
-        """
-        Si no se cumple la condición, quiere decir que la variable 'empate' cambió su valo de 0 a 1
-         por ende es un empate entre ambos jugadores y el casino no cobrará comisión. Se informa lo siguiente por pantalla:
-        """
-        print('Al ser un empate entre ambos jugadores el casino no cobrará comisiñon')
+        print('Al ser un empate entre ambos jugadores el casino no cobrará comisión')
 
 #-----FIN DE FUNCIÓN-----
 
