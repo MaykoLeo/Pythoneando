@@ -1,38 +1,33 @@
+# -*- coding: utf-8 -*-
 
-#Se invoca al módulo 'random' para generar números aleatorios
+# Se invoca al módulo 'random' para generar números aleatorios
 import random
-
-
-
-
 
 #-----INICIO DE FUNCIÓN-----
 
 
 def dados():
     """
-    Esta funcion asignara números aleatorios, determinara el puntaje segun cada valor
-     y comprobará si hay números pares iguales que otra funciñon utilizará para multiplicar el puntaje.
+    Esta función asignara números aleatorios, determinara el puntaje segun cada
+
+    valor y comprobar si hay números pares iguales que otra función utilizar
+
+    para multiplicar el puntaje.
     """
 
     global dado1, dado2, dado3, punt_dado1, punt_dado2, punt_dado3, duplicado
 
+    dado1 = random.randint(1, 6)
+    dado2 = random.randint(1, 6)
+    dado3 = random.randint(1, 6)
 
-    dado1 = random.randint(1,6)
-    dado2 = random.randint(1,6)
-    dado3 = random.randint(1,6)
+    duplicado = punt_dado1 = punt_dado2 = punt_dado3 = 0
 
+    # ---PRIMER DADO---
+    # Primero se analizar el resto de cada valor de los dados al dividirlo en
 
-    duplicado = 0
-    punt_dado1 = 0
-    punt_dado2 = 0
-    punt_dado3 = 0
-
-
-
-    #---PRIMER DADO---
-    #Primero se analizará el resto de cada valor de los dados al dividirlo en dos, para determinar si son pares o impares
-    comprobacion1  = dado1 % 2
+    # dos, para determinar si son pares o impares
+    comprobacion1 = dado1 % 2
 
     if comprobacion1 != 0:
         if dado1 == 1:
@@ -42,9 +37,7 @@ def dados():
         else:
             punt_dado1 = 4
 
-
-
-    #--SEGUNDO DADO--
+    # --SEGUNDO DADO--
     comprobacion2 = dado2 % 2
 
     if comprobacion2 != 0:
@@ -55,9 +48,7 @@ def dados():
         else:
             punt_dado2 = 4
 
-
-
-    #--TERCER DADO--
+    # --TERCER DADO--
     comprobacion3 = dado3 % 2
 
     if comprobacion3 != 0:
@@ -68,28 +59,20 @@ def dados():
         else:
             punt_dado3 = 4
 
-
-
-    #COMPROBACIÓN DE DUPLICADO DE PUNTAJE
+    # COMPROBACIÓN DE DUPLICADO DE PUNTAJE
     if comprobacion1 == 0 and comprobacion2 == 0 and comprobacion3 == 0:
         if dado1 == dado2 == dado3:
-            duplicado=1
-
+            duplicado = 1
 
 #-----FIN DE FUNCIÓN-----
 
-
-
-
-
 #-----INICIO DE FUNCIÓN-----
+
 
 def jugador_1():
     global punt_total_j1
 
-
-
-    #-PRIMER TIRADA
+    # -PRIMER TIRADA
     print('\n---Comienza la primer tirada de dados---')
 
     dados()
@@ -97,20 +80,17 @@ def jugador_1():
     dupli1 = duplicado
     punt_1 = punt_dado1 + punt_dado2 + punt_dado3
 
+    print('\nTiro 1 Dado 1 = ', dado1)
+    print('Tiro 1 Dado 2 = ', dado2)
+    print('Tiro 1 Dado 3 = ', dado3)
 
-    print('\nTiro 1 Dado 1 = ',dado1)
-    print('Tiro 1 Dado 2 = ',dado2)
-    print('Tiro 1 Dado 3 = ',dado3)
+    print('\nPuntos Tiro 1 Dado 1 = ', punt_dado1)
+    print('Puntos Tiro 1 Dado 2 = ', punt_dado2)
+    print('Puntos Tiro 1 Dado 3 = ', punt_dado3)
 
-    print('\nPuntos Tiro 1 Dado 1 = ',punt_dado1)
-    print('Puntos Tiro 1 Dado 2 = ',punt_dado2)
-    print('Puntos Tiro 1 Dado 3 = ',punt_dado3)
+    print('\n-Puntos de la primer tirada = ', punt_1)
 
-    print('-Suma de los puntos de la primer tirada: ',punt_1)
-
-
-
-    #-SEGUNDA TIRADA
+    # -SEGUNDA TIRADA
     print('\n---Comienza la segunda tirada de dados---')
 
     dados()
@@ -118,20 +98,17 @@ def jugador_1():
     dupli2 = duplicado
     punt_2 = punt_dado1 + punt_dado2 + punt_dado3
 
+    print('\nTiro 2 Dado 1 = ', dado1)
+    print('Tiro 2 Dado 2 = ', dado2)
+    print('Tiro 2 Dado 3 = ', dado3)
 
-    print('\nTiro 2 Dado 1 = ',dado1)
-    print('Tiro 2 Dado 2 = ',dado2)
-    print('Tiro 2 Dado 3 = ',dado3)
+    print('\nPuntos Tiro 2 Dado 1 = ', punt_dado1)
+    print('Puntos Tiro 2 Dado 2 = ', punt_dado2)
+    print('Puntos Tiro 2 Dado 3 = ', punt_dado3)
 
-    print('\nPuntos Tiro 2 Dado 1 = ',punt_dado1)
-    print('Puntos Tiro 2 Dado 2 = ',punt_dado2)
-    print('Puntos Tiro 2 Dado 3 = ',punt_dado3)
+    print('\n-Puntos de la segunda tirada = ', punt_2)
 
-    print('-Suma de los puntos de la segunda tirada: ',punt_2)
-
-
-
-    #-TERCERA TIRADA
+    # -TERCERA TIRADA
     print('\n---Comienza la tercer tirada de dados---')
 
     dados()
@@ -139,20 +116,17 @@ def jugador_1():
     dupli3 = duplicado
     punt_3 = punt_dado1 + punt_dado2 + punt_dado3
 
+    print('\nTiro 3 Dado 1 = ', dado1)
+    print('Tiro 3 Dado 2 = ', dado2)
+    print('Tiro 3 Dado 3 = ', dado3)
 
-    print('\nTiro 3 Dado 1 = ',dado1)
-    print('Tiro 3 Dado 2 = ',dado2)
-    print('Tiro 3 Dado 3 = ',dado3)
+    print('\nPuntos Tiro 3 Dado 1 = ', punt_dado1)
+    print('Puntos Tiro 3 Dado 2 = ', punt_dado2)
+    print('Puntos Tiro 3 Dado 3 = ', punt_dado3)
 
-    print('\nPuntos Tiro 3 Dado 1 = ',punt_dado1)
-    print('Puntos Tiro 3 Dado 2 = ',punt_dado2)
-    print('Puntos Tiro 3 Dado 3 = ',punt_dado3)
+    print('\n-Puntos de la tercer tirada = ', punt_3)
 
-    print('-Suma de los puntos de la tercer tirada: ',punt_3)
-
-
-
-    #-CUARTA TIRADA
+    # -CUARTA TIRADA
     print('\n---Comienza la cuarta tirada de dados---')
 
     dados()
@@ -160,134 +134,109 @@ def jugador_1():
     dupli4 = duplicado
     punt_4 = punt_dado1 + punt_dado2 + punt_dado3
 
+    print('\nTiro 4 Dado 1 = ', dado1)
+    print('Tiro 4 Dado 2 = ', dado2)
+    print('Tiro 4 Dado 3 = ', dado3)
 
-    print('\nTiro 4 Dado 1 = ',dado1)
-    print('Tiro 4 Dado 2 = ',dado2)
-    print('Tiro 4 Dado 3 = ',dado3)
+    print('\nPuntos Tiro 4 Dado 1 = ', punt_dado1)
+    print('Puntos Tiro 4 Dado 2 = ', punt_dado2)
+    print('Puntos Tiro 4 Dado 3 = ', punt_dado3)
 
-    print('\nPuntos Tiro 4 Dado 1 = ',punt_dado1)
-    print('Puntos Tiro 4 Dado 2 = ',punt_dado2)
-    print('Puntos Tiro 4 Dado 3 = ',punt_dado3)
-
-    print('-Suma de los puntos de la cuarta tirada: ',punt_4)
-
+    print('\n-Puntos de la cuarta tirada = ', punt_4)
 
     punt_total_j1 = punt_1 + punt_2 + punt_3 + punt_4
-   
 
     if dupli1 == 1 or dupli2 == 1 or dupli3 == 1 or dupli4 == 1:
         punt_total_j1 = punt_total_j1 * 2
-        print('\nBONUS DE DUPLICADO DISPONIBLE!!')
+        print('\n\tBONUS DE DUPLICADO DISPONIBLE!!')
     else:
         print('\nNo hay bonus de duplicado disponible.')
-    print('\n--* La Puntuación Total del Jugador 1 es: ',punt_total_j1,'puntos *--')
+    print('\n\t--* La Puntuación Total del Jugador 1 es: ',
+
+          punt_total_j1, 'PUNTOS *--')
 
 #-----FIN DE FUNCIÓN-----
 
-
-
-
-
 #-----INICIO DE FUNCIÓN-----
+
+
 
 def jugador_2():
     global punt_total_j2
 
-
-
-    #-PRIMER TIRADA
+    # -PRIMER TIRADA
     print('\n---Comienza la primer tirada de dados---')
 
-
     dados()
-
 
     dupli1 = duplicado
     punt_1 = punt_dado1 + punt_dado2 + punt_dado3
 
+    print('\nTiro 1 Dado 1 = ', dado1)
+    print('Tiro 1 Dado 2 = ', dado2)
+    print('Tiro 1 Dado 3 = ', dado3)
 
-    print('\nTiro 1 Dado 1 = ',dado1)
-    print('Tiro 1 Dado 2 = ',dado2)
-    print('Tiro 1 Dado 3 = ',dado3)
+    print('\nPuntos Tiro 1 Dado 1 = ', punt_dado1)
+    print('Puntos Tiro 1 Dado 2 = ', punt_dado2)
+    print('Puntos Tiro 1 Dado 3 = ', punt_dado3)
 
-    print('\nPuntos Tiro 1 Dado 1 = ',punt_dado1)
-    print('Puntos Tiro 1 Dado 2 = ',punt_dado2)
-    print('Puntos Tiro 1 Dado 3 = ',punt_dado3)
+    print('\n-Puntos de la primer tirada = ', punt_1)
 
-    print('-Suma de los puntos de la primer tirada: ',punt_1)
-
-
-
-    #-SEGUNDA TIRADA
+    # -SEGUNDA TIRADA
     print('\n---Comienza la segunda tirada de dados---')
 
-
     dados()
-
 
     dupli2 = duplicado
     punt_2 = punt_dado1 + punt_dado2 + punt_dado3
 
+    print('\nTiro 2 Dado 1 = ', dado1)
+    print('Tiro 2 Dado 2 = ', dado2)
+    print('Tiro 2 Dado 3 = ', dado3)
 
-    print('\nTiro 2 Dado 1 = ',dado1)
-    print('Tiro 2 Dado 2 = ',dado2)
-    print('Tiro 2 Dado 3 = ',dado3)
+    print('\nPuntos Tiro 2 Dado 1 = ', punt_dado1)
+    print('Puntos Tiro 2 Dado 2 = ', punt_dado2)
+    print('Puntos Tiro 2 Dado 3 = ', punt_dado3)
 
-    print('\nPuntos Tiro 2 Dado 1 = ',punt_dado1)
-    print('Puntos Tiro 2 Dado 2 = ',punt_dado2)
-    print('Puntos Tiro 2 Dado 3 = ',punt_dado3)
+    print('\n-Puntos de la segunda tirada = ', punt_2)
 
-    print('-Suma de los puntos de la segunda tirada: ',punt_2)
-
-
-
-    #-TERCER TIRADA
+    # -TERCER TIRADA
     print('\n---Comienza la tercer tirada de dados---')
 
-
     dados()
-
 
     dupli3 = duplicado
     punt_3 = punt_dado1 + punt_dado2 + punt_dado3
 
+    print('\nTiro 3 Dado 1 = ', dado1)
+    print('Tiro 3 Dado 2 = ', dado2)
+    print('Tiro 3 Dado 3 = ', dado3)
 
-    print('\nTiro 3 Dado 1 = ',dado1)
-    print('Tiro 3 Dado 2 = ',dado2)
-    print('Tiro 3 Dado 3 = ',dado3)
+    print('\nPuntos Tiro 3 Dado 1 = ', punt_dado1)
+    print('Puntos Tiro 3 Dado 2 = ', punt_dado2)
+    print('Puntos Tiro 3 Dado 3 = ', punt_dado3)
 
-    print('\nPuntos Tiro 3 Dado 1 = ',punt_dado1)
-    print('Puntos Tiro 3 Dado 2 = ',punt_dado2)
-    print('Puntos Tiro 3 Dado 3 = ',punt_dado3)
+    print('\n-Puntos de la tercer tirada = ', punt_3)
 
-    print('-Suma de los puntos de la tercer tirada: ',punt_3)
-
-
-
-    #-CUARTA TIRADA
+    # -CUARTA TIRADA
     print('\n---Comienza la cuarta tirada de dados---')
 
-
     dados()
-
 
     dupli4 = duplicado
     punt_4 = punt_dado1 + punt_dado2 + punt_dado3
 
+    print('\nTiro 4 Dado 1 = ', dado1)
+    print('Tiro 4 Dado 2 = ', dado2)
+    print('Tiro 4 Dado 3 = ', dado3)
 
-    print('\nTiro 4 Dado 1 = ',dado1)
-    print('Tiro 4 Dado 2 = ',dado2)
-    print('Tiro 4 Dado 3 = ',dado3)
+    print('\nPuntos Tiro 4 Dado 1 = ', punt_dado1)
+    print('Puntos Tiro 4 Dado 2 = ', punt_dado2)
+    print('Puntos Tiro 4 Dado 3 = ', punt_dado3)
 
-    print('\nPuntos Tiro 4 Dado 1 = ',punt_dado1)
-    print('Puntos Tiro 4 Dado 2 = ',punt_dado2)
-    print('Puntos Tiro 4 Dado 3 = ',punt_dado3)
-
-    print('-Suma de los puntos de la cuarta tirada: ',punt_4)
-
+    print('\n-Puntos de la cuarta tirada = ', punt_4)
 
     punt_total_j2 = punt_1 + punt_2 + punt_3 + punt_4
-
 
     if dupli1 == 1 or dupli2 == 1 or dupli3 == 1 or dupli4 == 1:
         punt_total_j2 = punt_total_j2 * 2
@@ -295,72 +244,87 @@ def jugador_2():
     else:
         print('\nNo hay bonus de duplicado disponible.')
 
+    print('\n\t--* La Puntuación Total del Jugador 2 es: ',
 
-    print('\n--* La Puntuación Total del Jugador 2 es: ',punt_total_j2,'Puntos *--')
+          punt_total_j2, 'PUNTOS *--')
 
 #-----FIN DE FUNCIÓN-----
-
-
-
 
 #-----INICIO DE FUNCIÓN-----
 
 
 def dinero_dinero_dinero():
     """
-En esta función sería la principal se realizan las operaciónes referentes a la parte monetaria (como su nombre lo indica),
- calculando las ganancias para los jugadores y para el mismo casino, ademas de mostrar algunos mensajes por pantalla
- que se ejecutan al inicio del programa
+
+    Esta función sería la principal, en ella se realizan las operaciones
+
+    referentes a la parte monetaria (como su nombre lo indica),calculando las
+
+    ganancias para los jugadores y para el mismo casino,
+
+    ademas de mostrar algunos mensajes por pantalla que se ejecutan
+
+    al inicio del programa
     """
 
-    print('***-BIENVENIDO AL JUEGO DEL PUNTO-***')
+    print('\t\t\t***-BIENVENIDO AL JUEGO DEL PUNTO-***\t\t\tv1.0.4')
 
+    nombre1 = input('\n\n Ingrese el Nombre del Jugador 1: ')
+    nombre2 = input(' Ingrese el Nombre del Jugador 2: ')
+    apuesta = float(input('\n Por favor ingrese el monto de la apuesta '
 
-    apuesta=float(input('\nIngrese el monto de la apuesta acordado por ambos jugadores: '))
+                          'acordado por ambos jugadores: '))
 
-
-    print('\n-El Jugador 1 comienza jugando-\n')
+    print('\n\n\t-El Jugador 1 "',nombre1,'" comienza jugando-\n')
     jugador_1()
 
-    print('\n-Es turno del jugador 2-\n')
+    print('\n\n\n\t-Es turno del jugador 2 "',nombre2,'"-\n')
     jugador_2()
-
 
     empate = 0
 
-
     if punt_total_j1 == punt_total_j2:
-        print('\nLA PUNTUACION DE AMBOS JUGADORES ES IGUAL A: ',punt_total_j2,'PUNTOS, POR LO TANTO HAY EMPATE')
-        print('Cada jugador recupera su apuesta inicial correspondiente')
+        print('\n\n\tLA PUNTUACIÓN DE AMBOS JUGADORES ES IGUAL A: ',
+
+              punt_total_j2, 'PUNTOS, POR LO TANTO HAY EMPATE')
+        print('\tCada jugador recupera su apuesta inicial correspondiente')
         empate = 1
     elif punt_total_j1 > punt_total_j2:
-        print('\nEL JUGADOR 1 GANA LA PARTIDA!!')
+        print('\n\n\n\tEL JUGADOR 1 "',nombre1,'" GANA LA PARTIDA!!')
     else:
-        print('\nEL JUGADOR 2 GANA LA PARTIDA!!')
+        print('\n\n\n\tEL JUGADOR 2 "',nombre2,'" GANA LA PARTIDA!!')
 
-
-    print('\nEl pozo de apuesta vale: ',apuesta)
-
+    print('\nEl pozo de apuesta vale: ', apuesta,'pesos')
 
     if empate != 1:
         if apuesta <= 2000:
             gan_casino = (apuesta * 15) / 100
             apuesta = apuesta - gan_casino
-            print('\nEl casino cobrará una comisión del 15 por ciento, por lo tanto le corresponderá: ',gan_casino,'Pesos.')
-            print('El jugador Ganador cobrará:', apuesta,'Pesos.')
+            print('\nEl casino cobrará una comisión del 15% (por ciento), '
+
+                  'por lo tanto le corresponderá la cantidad'
+
+                  'de: ', gan_casino, 'Pesos.')'
+            print('\n\tEL JUGADOR GANADOR COBRARÁ:', apuesta, 'PESOS.')
         else:
             gan_casino = (apuesta * 25) / 100
             apuesta = apuesta - gan_casino
-            print('\nEl casino cobrará una comisión del 25 por ciento, por lo tanto le corresponderá: ',gan_casino,'Pesos.')
-            print('El jugador Ganador cobrará:', apuesta,'Pesos.')
+            print('\nEl casino cobrará una comisión del 25% (por ciento), '
+
+                  'por lo tanto le corresponderá la cantidad'
+
+                  'de: ', gan_casino, 'Pesos.')
+            print('\n\tEL JUGADOR GANADOR COBRARÁ:', apuesta, 'PESOS.')
     else:
-        print('Al ser un empate entre ambos jugadores el casino no cobrará comisión')
+        print('Al ser un empate entre ambos jugadores '
+
+              'el casino no cobrará comisión')
+
+    print('\n\n\t\t\tMUCHAS GRACIAS POR JUGAR CON NOSOTROS'
+
+          '\n\t\t\t       LOS ESPERAMOS DE NUEVO!!')
 
 #-----FIN DE FUNCIÓN-----
-
-
-
-
 
 #script principal
 
