@@ -303,7 +303,7 @@ def dinero_dinero_dinero():
 
                   'por lo tanto le corresponderá la cantidad'
 
-                  'de: ', gan_casino, 'Pesos.')'
+                  'de: ', gan_casino, 'Pesos.')
             print('\n\tEL JUGADOR GANADOR COBRARÁ:', apuesta, 'PESOS.')
         else:
             gan_casino = (apuesta * 25) / 100
